@@ -87,7 +87,7 @@ section {
     display: flex;
     align-items: center;
     padding: 0 9%;
-    background: url("/images/home.jpg") no-repeat;
+    background: url('/images/home.jpg') no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -96,7 +96,6 @@ section {
     max-width: 60rem;
     z-index: 99;
 }
-
 .home-content h1 {
     position: relative;
     display: inline-block;
