@@ -256,7 +256,7 @@ section {
     width: 100%;
 }
 
-.home-imgHover {
+/* .home-imgHover {
     position: absolute;
     top: 0;
     right: 0;
@@ -269,7 +269,7 @@ section {
 .home-imgHover:hover {
     background: var(--bg-color);
     opacity: .8;
-}
+} */
 
 .about {
     display: flex;
