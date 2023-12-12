@@ -182,16 +182,16 @@ section {
     color: var(--main-color);
 }
 
-.btn-box .btn:nth-child(2) {
+.btn-box .btn:nth-child(2n) {
     background: transparent;
     color: var(--main-color);
 }
 
-.btn-box .btn:nth-child(2):hover {
+.btn-box .btn:nth-child(2n):hover {
     color: var(--bg-color);
 }
 
-.btn-box .btn:nth-child(2)::before {
+.btn-box .btn:nth-child(2n)::before {
     background: var(--main-color);
 }
 
@@ -279,7 +279,7 @@ section {
     width: 400px;
     margin: 0 5px;
 }
-.about {
+.about, .eventos, .deportes {
     display: flex;
     justify-content: center;
     align-items: center;
