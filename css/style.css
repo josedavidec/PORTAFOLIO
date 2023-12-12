@@ -96,6 +96,7 @@ section {
     max-width: 60rem;
     z-index: 99;
 }
+
 .home-content h1 {
     position: relative;
     display: inline-block;
@@ -262,23 +263,26 @@ section {
     right: 0;
     width: 45%;
     height: 100%;
-    background: transparent; 
-    transition: 3s; 
+    background: transparent;
+    transition: 3s;
 }
 
 .home-imgHover:hover {
     background: var(--bg-color);
     opacity: .8;
 }
+
 .conteventos-images {
     display: flex;
     justify-content: center;
 
 }
+
 .eventos-images {
     width: 400px;
     margin: 0 5px;
 }
+
 .about {
     display: flex;
     justify-content: center;
@@ -288,6 +292,7 @@ section {
     background: var(--second-bg-color);
     padding-bottom: 6rem;
 }
+
 .heading {
     position: relative;
     font-size: 5rem;
