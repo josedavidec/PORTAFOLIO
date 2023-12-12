@@ -272,16 +272,6 @@ section {
     opacity: .8;
 }
 
-.conteventos-images {
-    display: flex;
-    justify-content: center;
-
-}
-
-.eventos-images {
-    width: 400px;
-    margin: 0 5px;
-}
 
 .about {
     display: flex;
