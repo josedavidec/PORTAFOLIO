@@ -96,7 +96,6 @@ section {
     max-width: 60rem;
     z-index: 99;
 }
-
 .home-content h1 {
     position: relative;
     display: inline-block;
@@ -263,15 +262,14 @@ section {
     right: 0;
     width: 45%;
     height: 100%;
-    background: transparent;
-    transition: 3s;
+    background: transparent; 
+    transition: 3s; 
 }
 
 .home-imgHover:hover {
     background: var(--bg-color);
     opacity: .8;
 }
-
 
 .about {
     display: flex;
