@@ -52,6 +52,9 @@ body {
     width: 10px;
    
 }
+.logo img {
+    width: 10px;
+}
 
 .navbar {
     position: relative;
