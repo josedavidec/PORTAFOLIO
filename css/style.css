@@ -48,8 +48,9 @@ body {
 
 .logo {
     position: relative;
-    font-size: .5rem;
     color: var(--text-color);
+    width: 10px;
+   
 }
 
 .navbar {
