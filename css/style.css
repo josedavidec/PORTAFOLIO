@@ -776,6 +776,9 @@ section:nth-child(odd) .animate.scroll,
     .footer {
         padding: 2rem 4%;
     }
+    .home {
+        background-image: none;
+    }
 }
 
 @media (max-width: 850px) {
