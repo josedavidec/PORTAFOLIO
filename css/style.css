@@ -848,6 +848,9 @@ section:nth-child(odd) .animate.scroll,
         background: var(--bg-color);
         opacity: .6;
     }
+    .home {
+        background-image: url('/images/about.jpg');
+    }
 }
 
 @media (max-width: 520px) {
