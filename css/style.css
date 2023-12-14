@@ -440,6 +440,15 @@ span {
 .box:nth-child(6) {
     grid-column-start: span 1.5;
 }
+.portadas img {
+    
+    width: 100px;
+    padding: 1;
+}
+.portadas img:hover {
+    width: 150px;
+    padding: 1;
+}
 
 
 .portafolio-content .content::before {
