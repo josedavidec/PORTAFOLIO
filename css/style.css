@@ -850,7 +850,7 @@ section:nth-child(odd) .animate.scroll,
     }
     .home {
         background-image: url('/images/about.jpg');
-        width: auto;
+        width: 100%;
     }
 }
 
