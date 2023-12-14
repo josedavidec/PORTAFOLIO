@@ -288,7 +288,7 @@ section {
     align-items: center;
     flex-direction: column;
     gap: 2rem;
-    background: var(--second-bg-color);
+    background: var(--bg-color);
     padding-bottom: 6rem;
 }
 .heading {
