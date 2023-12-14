@@ -407,18 +407,23 @@ span {
 
 .portafolio-content .content {
     position: relative;
-    /* padding: 1.5rem; */
+    padding: 1.5rem;
     border: .2rem solid var(--main-color);
     border-radius: .6rem;
     margin-bottom: 2rem;
     overflow: hidden;
+    box-sizing: border-box;
+    
+
+}
+.contimagenes {
+    max-width: 1000px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 250px;
     grid-gap: 20px;
     padding: 100px 0;
-
 }
 .box img {
     width: 100%;
@@ -807,9 +812,9 @@ section:nth-child(odd) .animate.scroll,
     .animate.home-img {
         width: 55%;
     }
-    .portafolio-content .content {
+    .contimagenes {
         padding: 30px;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
     .box:nth-child(1) {
         grid-column-start: span 1;
