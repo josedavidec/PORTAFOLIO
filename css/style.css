@@ -982,6 +982,10 @@ section:nth-child(odd) .animate.scroll,
     .home-content h1 {
         font-size: 5rem;
     }
+    .behan {
+        width: 20%;
+        height: 20%;
+    }
 }
 
 
