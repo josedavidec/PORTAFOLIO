@@ -923,9 +923,12 @@ section:nth-child(odd) .animate.scroll,
         height: 38px;
     }
     .home {
-        background-image: url('/images/about.jpg');
-        width: 100%;
+        background-image: none;
+       
         
+    }
+    .portafolio-row {
+        width: 100%;
     }
  
 }
