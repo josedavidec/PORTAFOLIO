@@ -938,10 +938,7 @@ section:nth-child(odd) .animate.scroll,
        
         
     }
-    .behan {
-        width: 28%;
-        height: 28%;
-    }
+    
 }
 
 @media (max-width: 462px) {
@@ -965,10 +962,7 @@ section:nth-child(odd) .animate.scroll,
         margin-top: 2rem;
         text-align: center;
     }
-    .behan {
-        width: 20%;
-        height: 20%;
-    }
+    
 }
 
 @media (max-width: 371px) {
@@ -986,10 +980,7 @@ section:nth-child(odd) .animate.scroll,
     .home-content h1 {
         font-size: 5rem;
     }
-    .behan {
-        width: 20%;
-        height: 20%;
-    }
+   
 }
 
 
