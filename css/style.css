@@ -839,6 +839,13 @@ section:nth-child(odd) .animate.scroll,
         grid-column-start: span 1;
     }
 }
+@media (max-width: 810px) {
+    .behan {
+        width: 40%;
+        height: 40%;
+    }
+    
+}
 
 @media (max-width: 768px) {
     .header {
