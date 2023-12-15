@@ -938,7 +938,10 @@ section:nth-child(odd) .animate.scroll,
        
         
     }
- 
+    .behan {
+        width: 28%;
+        height: 28%;
+    }
 }
 
 @media (max-width: 462px) {
