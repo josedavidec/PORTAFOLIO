@@ -802,6 +802,10 @@ section:nth-child(odd) .animate.scroll,
     .header {
         padding: 2rem 4%;
     }
+    .behan {
+        width: 55%;
+        height: 55%;
+    }
 
     section {
         padding: 10rem 4% 2rem;
