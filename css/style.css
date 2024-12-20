@@ -45,16 +45,28 @@ body {
 .header.sticky {
     background: var(--bg-color);
 }
-
 .logo {
+    
     position: relative;
+    
     color: var(--text-color);
-   
+    
 }
+.logo a {
+    color: var(--text-color);
+    display: absolute;
+    vertical-align: top;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
 .logo img {
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 1rem;
 }
+
 
 .navbar {
     position: relative;
@@ -99,6 +111,7 @@ section {
     max-width: 60rem;
     z-index: 99;
 }
+
 .home-content h1 {
     position: relative;
     display: inline-block;
@@ -185,16 +198,16 @@ section {
     color: var(--main-color);
 }
 
-.btn-box .btn:nth-child(2n) {
+.btn-box .btn:nth-child(2) {
     background: transparent;
     color: var(--main-color);
 }
 
-.btn-box .btn:nth-child(2n):hover {
+.btn-box .btn:nth-child(2):hover {
     color: var(--bg-color);
 }
 
-.btn-box .btn:nth-child(2n)::before {
+.btn-box .btn:nth-child(2)::before {
     background: var(--main-color);
 }
 
@@ -265,32 +278,25 @@ section {
     right: 0;
     width: 45%;
     height: 100%;
-    background: transparent; 
-    transition: 3s; 
+    background: transparent;
+    transition: 3s;
 }
 
 .home-imgHover:hover {
     background: var(--bg-color);
     opacity: .8;
 }
-.conteventos-images {
-    display: flex;
-    justify-content: center;
 
-}
-.eventos-images {
-    width: 400px;
-    margin: 0 5px;
-}
 .about {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 2rem;
-    background: var(--bg-color);
+    background: var(--second-bg-color);
     padding-bottom: 6rem;
 }
+
 .heading {
     position: relative;
     font-size: 5rem;
@@ -358,7 +364,7 @@ span {
     background: var(--second-bg-color);
 }
 
-.portafoliocation {
+.education {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -367,34 +373,34 @@ span {
     padding-bottom: 5rem;
 }
 
-.portafolio .portafolio-row {
+.education .education-row {
     display: flex;
     flex-wrap: wrap;
     gap: 5rem;
 }
 
-.portafolio-row .portafolio-column {
+.education-row .education-column {
     flex: 1 1 40rem;
 }
 
-.portafolio-column .title {
+.education-column .title {
     position: relative;
     display: inline-block;
     font-size: 2.5rem;
     margin: 0 0 1.5rem 2rem;
 }
 
-.portafolio-column .portafolio-box {
+.education-column .education-box {
     position: relative;
     border-left: .2rem solid var(--main-color);
 }
 
-.portafolio-box .portafolio-content {
+.education-box .education-content {
     position: relative;
     padding-left: 2rem;
 }
 
-.portafolio-box .portafolio-content::before {
+.education-box .education-content::before {
     content: '';
     position: absolute;
     top: 0;
@@ -405,55 +411,16 @@ span {
     border-radius: 50%;
 }
 
-.portafolio-content .content {
+.education-content .content {
     position: relative;
     padding: 1.5rem;
     border: .2rem solid var(--main-color);
     border-radius: .6rem;
     margin-bottom: 2rem;
     overflow: hidden;
-    box-sizing: border-box;
-    
-  
-    
-
-}
-.contimagenes {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 250px;
-    grid-gap: 20px;
-    padding: 100px 0;
-}
-.box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
-.box:nth-child(1) {
-    grid-column-start: span 1.5;
-}
-.box:nth-child(4) {
-    grid-column-start: span 1.5;
-}
-.box:nth-child(6) {
-    grid-column-start: span 1.5;
-}
-.portadas img {
-    
-    width: 100px;
-    padding: 1;
-}
-.portadas img:hover {
-    width: 150px;
-    padding: 1;
-}
-
-
-.portafolio-content .content::before {
+.education-content .content::before {
     content: '';
     position: absolute;
     top: 0;
@@ -465,29 +432,28 @@ span {
     transition: .5s;
 }
 
-.portafolio-content .content:hover::before {
+.education-content .content:hover::before {
     width: 100%;
 }
 
-.portafolio-content .content .year {
+.education-content .content .year {
     font-size: 1.5rem;
     color: var(--main-color);
     padding-bottom: .5rem;
 }
 
-.portafolio-content .content .year i {
+.education-content .content .year i {
     padding-right: .5rem;
 }
 
-.portafolio-content .content h3 {
+.education-content .content h3 {
     font-size: 2rem;
 }
 
-.portafolio-content .content p {
+.education-content .content p {
     font-size: 1.6rem;
     padding-top: .5rem;
 }
-
 
 .skills {
     min-height: auto;
@@ -577,15 +543,15 @@ span {
 }
 
 .skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span {
-    width: 75%;
+    width: 90%;
 }
 
 .skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span {
-    width: 75%;
+    width: 80%;
 }
 
 .skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span {
-    width: 80%;
+    width: 65%;
 }
 
 .skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span {
@@ -593,19 +559,19 @@ span {
 }
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span {
-    width: 75%;
+    width: 95%;
 }
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span {
-    width: 65%;
+    width: 67%;
 }
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span {
-    width: 50%;
+    width: 85%;
 }
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
-    width: 50%;
+    width: 60%;
 }
 
 .contact {
@@ -779,12 +745,12 @@ section:nth-child(odd) .animate.scroll,
     background: var(--second-bg-color);
 }
 
-.portafolio .portafolio-box .animate.scroll {
+.education .education-box .animate.scroll {
     width: 105%;
 }
 
 .about.show-animate .animate.scroll,
-.portafolio.show-animate .animate.scroll,
+.education.show-animate .animate.scroll,
 .skills.show-animate .animate.scroll,
 .contact.show-animate .animate.scroll,
 .footer.show-animate .animate.scroll {
@@ -804,10 +770,6 @@ section:nth-child(odd) .animate.scroll,
     .header {
         padding: 2rem 4%;
     }
-    .behan {
-        width: 55%;
-        height: 55%;
-    }
 
     section {
         padding: 10rem 4% 2rem;
@@ -820,33 +782,12 @@ section:nth-child(odd) .animate.scroll,
     .footer {
         padding: 2rem 4%;
     }
-    
 }
 
 @media (max-width: 850px) {
     .animate.home-img {
         width: 55%;
     }
-    .contimagenes {
-        padding: 30px;
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .box:nth-child(1) {
-        grid-column-start: span 1;
-    }
-    .box:nth-child(4) {
-        grid-column-start: span 1;
-    }
-    .box:nth-child(6) {
-        grid-column-start: span 1;
-    }
-}
-@media (max-width: 810px) {
-    .behan {
-        width: 50%;
-        height: 50%;
-    }
-    
 }
 
 @media (max-width: 768px) {
@@ -913,8 +854,6 @@ section:nth-child(odd) .animate.scroll,
         background: var(--bg-color);
         opacity: .6;
     }
-   
-
 }
 
 @media (max-width: 520px) {
@@ -935,12 +874,6 @@ section:nth-child(odd) .animate.scroll,
         width: 38px;
         height: 38px;
     }
-    .home {
-        background-image: none;
-       
-        
-    }
-    
 }
 
 @media (max-width: 462px) {
@@ -948,7 +881,7 @@ section:nth-child(odd) .animate.scroll,
         font-size: 5.2rem;
     }
 
-    .portafolio {
+    .education {
         padding: 10rem 4% 5rem 5%;
     }
 
@@ -964,11 +897,8 @@ section:nth-child(odd) .animate.scroll,
         margin-top: 2rem;
         text-align: center;
     }
-    .behan {
-        width: 100%;
-        
-        
-    }
+    .logo a {
+    display: none;}
 }
 
 @media (max-width: 371px) {
@@ -986,7 +916,6 @@ section:nth-child(odd) .animate.scroll,
     .home-content h1 {
         font-size: 5rem;
     }
-   
 }
 
 
