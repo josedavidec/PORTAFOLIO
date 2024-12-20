@@ -898,7 +898,7 @@ section:nth-child(odd) .animate.scroll,
         text-align: center;
     }
     .logo a {
-    display: none;}
+        display: none;}
 }
 
 @media (max-width: 371px) {
