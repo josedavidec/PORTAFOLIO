@@ -227,12 +227,14 @@ section {
     width: 100%;
 }
 
+
 .home-sci {
     position: absolute;
     bottom: 4rem;
     width: 170px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;  /* Cambiado de space-between a center */
+    gap: 1rem;  /* Añadir espacio entre los íconos si es necesario */
     
 }
 
