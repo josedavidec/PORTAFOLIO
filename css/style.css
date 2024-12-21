@@ -232,7 +232,7 @@ section {
     bottom: 4rem;
     width: 170px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     
 }
 
