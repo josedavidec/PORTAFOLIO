@@ -129,7 +129,7 @@ section {
     width: 32.8rem;
 }
 
-.home-content .text-animate h3 {
+.home-content .text-animate h2 {
     font-size: 3.2rem;
     font-weight: 700;
     color: transparent;
@@ -140,12 +140,12 @@ section {
     background-position: -33rem 0;
 }
 
-.home.show-animate .home-content .text-animate h3 {
+.home.show-animate .home-content .text-animate h2 {
     animation: homeBgText 6s linear infinite;
     animation-delay: 2s;
 }
 
-.home-content .text-animate h3::before {
+.home-content .text-animate h2::before {
     content: '';
     position: absolute;
     top: 0;
@@ -156,7 +156,7 @@ section {
     z-index: -1;
 }
 
-.home.show-animate .home-content .text-animate h3::before {
+.home.show-animate .home-content .text-animate h2::before {
     animation: homeCursorText 6s linear infinite;
     animation-delay: 2s;
 }
@@ -180,7 +180,7 @@ section {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 15rem;
+    width: 16rem;
     height: 100%;
     background: var(--main-color);
     border: .2rem solid var(--main-color);
@@ -257,6 +257,7 @@ section {
 
 .home-sci a:hover {
     color: var(--bg-color);
+    background: var(--main-color);
 }
 
 .home-sci a::before {
@@ -854,7 +855,6 @@ section:nth-child(odd) .animate.scroll,
 
     .home-imgHover {
         pointer-events: none;
-        background: var(--bg-color);
         opacity: .6;
     }
 }
