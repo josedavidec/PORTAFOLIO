@@ -231,11 +231,12 @@ section {
 .home-sci {
     position: absolute;
     bottom: 4rem;
-    width: 170px; /* Ajusta este tamaño según sea necesario */
+    left: 50%; /* Centra horizontalmente el contenedor en la pantalla */
+    transform: translateX(-50%); /* Ajusta el contenedor para que quede perfectamente centrado */
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    gap: 1.5rem; /* Espaciado entre los íconos */
+    justify-content: center; /* Centra los íconos horizontalmente dentro del contenedor */
+    align-items: center; /* Centra los íconos verticalmente dentro del contenedor */
+    gap: 1rem; /* Espaciado entre los íconos */
 }
 
 .home-sci a {
