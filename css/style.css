@@ -45,28 +45,25 @@ body {
 .header.sticky {
     background: var(--bg-color);
 }
+
 .logo {
-    
-    position: relative;
-    
-    color: var(--text-color);
-    
+    display: flex;
+    align-items: center;
 }
+
 .logo a {
     color: var(--text-color);
-    display: absolute;
-    vertical-align: top;
     font-size: 2.5rem;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .logo img {
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     margin-right: 1rem;
 }
-
 
 .navbar {
     position: relative;
@@ -74,9 +71,9 @@ body {
 
 .navbar a {
     font-size: 1.7rem;
+    margin-left: 15px; /* Espacio entre los enlaces de navegación */
     color: var(--text-color);
     font-weight: 500;
-    margin-left: 3.5rem;
     transition: .3s;
 }
 
@@ -968,4 +965,36 @@ section:nth-child(odd) .animate.scroll,
     100% {
         width: 0;
     }
+}
+
+.blog-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.blog-entry {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.blog-entry h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.blog-entry p {
+    margin: 0.5rem 0 0;
+    color: #666;
+}
+
+.blog-entry a {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+.blog-entry a:hover {
+    text-decoration: underline;
 }
