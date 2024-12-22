@@ -235,7 +235,6 @@ section {
     transform: translateX(-50%); /* Ajusta el contenedor para que quede perfectamente centrado */
     display: flex;
     justify-content: center; /* Centra los íconos horizontalmente dentro del contenedor */
-    align-items: center; /* Centra los íconos verticalmente dentro del contenedor */
     gap: 1rem; /* Espaciado entre los íconos */
 }
 
