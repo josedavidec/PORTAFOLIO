@@ -231,11 +231,11 @@ section {
 .home-sci {
     position: absolute;
     bottom: 4rem;
-    width: 170px;
+    width: 170px; /* Ajusta este tamaño según sea necesario */
     display: flex;
-    justify-content: center;  /* Cambiado de space-between a center */
-    gap: 1rem;  /* Añadir espacio entre los íconos si es necesario */
-    
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    gap: 1.5rem; /* Espaciado entre los íconos */
 }
 
 .home-sci a {
