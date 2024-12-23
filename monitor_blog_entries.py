@@ -63,6 +63,19 @@ def update_html_file(file_path, recent_entries):
             '''
             if f'<a href="blog/{entry["filename"]}">' not in existing_entries:
                 new_entries_html += entry_html
+            else:
+                # Actualizar la entrada existente
+                existing_entry_start = existing_entries.find(f'<a href="blog/{entry["filename"]}">')
+                existing_entry_end = existing_entries.find('</article>', existing_entry_start) + len('</article>')
+                existing_entry_html = existing_entries[existing_entry_start:existing_entry_end]
+                updated_entry_html = existing_entry_html.replace(
+                    existing_entry_html[existing_entry_html.find('<img src="'):existing_entry_html.find('"', existing_entry_html.find('<img src="') + 10) + 1],
+                    f'<img src="{entry["image"]}"'
+                ).replace(
+                    existing_entry_html[existing_entry_html.find('<h3><a href="'):existing_entry_html.find('</a>', existing_entry_html.find('<h3><a href="')) + 4],
+                    f'<h3><a href="blog/{entry["filename"]}">{entry["title"]}</a>'
+                )
+                new_entries_html += updated_entry_html
 
         new_entries_html += '</div>'
 
@@ -82,10 +95,10 @@ def update_entry_in_html(file_path, entry):
             image_end = content.find('"', image_start)
 
             updated_content = (
-                content[:title_start] + entry['title'] + content[title_end:]
+                content[:image_start] + f'<img src="{entry["image"]}"' + content[image_end:]
             )
             updated_content = (
-                updated_content[:image_start] + entry['image'] + updated_content[image_end:]
+                updated_content[:title_start] + entry['title'] + updated_content[title_end:]
             )
 
             file.seek(0)
