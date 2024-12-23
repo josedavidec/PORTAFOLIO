@@ -3,7 +3,7 @@ from datetime import datetime
 
 # Configuración
 template_path = os.path.join(os.path.dirname(__file__), 'blog-entry-template.html')
-output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'blog')
+output_dir = os.path.join(os.path.dirname(__file__), 'blog')
 blog_index_path = os.path.join(os.path.dirname(__file__), '..', 'blog.html')
 index_path = os.path.join(os.path.dirname(__file__), '..', 'index.html')
 
@@ -66,20 +66,21 @@ def insert_entry_sorted(content, new_entry_html, entry_date):
     entries = [f'<article class="blog-entry">{entry}' for entry in entries]
     entries.append(new_entry_html)
     entries.sort(key=lambda x: datetime.strptime(x.split('Fecha: ')[1].split('</span>')[0], "%d/%m/%Y"), reverse=True)
-    return '<div class="blog-entries">' + ''.join(entries)
+    return '<div class="blog-entries">' + ''.join(entries) + '</div>'
 
-with open(blog_index_path, 'r+', encoding='utf-8') as file:
-    content = file.read()
-    updated_content = insert_entry_sorted(content, new_entry_html, entry_date)
-    file.seek(0)
-    file.write(updated_content)
-    file.truncate()
+def update_html_file(file_path, new_entry_html, entry_date):
+    with open(file_path, 'r+', encoding='utf-8') as file:
+        content = file.read()
+        start_pos = content.find('<div class="blog-entries">')
+        end_pos = content.find('</div>', start_pos) + len('</div>')
+        entries_content = content[start_pos:end_pos]
+        updated_entries_content = insert_entry_sorted(entries_content, new_entry_html, entry_date)
+        updated_content = content[:start_pos] + updated_entries_content + content[end_pos:]
+        file.seek(0)
+        file.write(updated_content)
+        file.truncate()
 
-with open(index_path, 'r+', encoding='utf-8') as file:
-    content = file.read()
-    updated_content = insert_entry_sorted(content, new_entry_html, entry_date)
-    file.seek(0)
-    file.write(updated_content)
-    file.truncate()
+update_html_file(blog_index_path, new_entry_html, entry_date)
+update_html_file(index_path, new_entry_html, entry_date)
 
 print(f'Entradas actualizadas en blog.html e index.html')
