@@ -50,7 +50,7 @@ with open(output_path, 'w', encoding='utf-8') as file:
 
 print(f'Nueva entrada creada: {output_path}')
 
-# Actualizar el archivo blog.html
+# Generar el HTML de la nueva entrada
 new_entry_html = f'''
 <article class="blog-entry">
     <img src="{entry_image}" alt="Imagen de la {entry_title}">
@@ -66,7 +66,7 @@ def insert_entry_sorted(content, new_entry_html, entry_date):
     entries = [f'<article class="blog-entry">{entry}' for entry in entries]
     entries.append(new_entry_html)
     entries.sort(key=lambda x: datetime.strptime(x.split('Fecha: ')[1].split('</span>')[0], "%d/%m/%Y"), reverse=True)
-    return '<div class="blog-entries">' + ''.join(entries) + '</div>'
+    return '<div class="blog-entries">' + ''.join(entries[:3]) + '</div>'
 
 def update_html_file(file_path, new_entry_html, entry_date):
     with open(file_path, 'r+', encoding='utf-8') as file:

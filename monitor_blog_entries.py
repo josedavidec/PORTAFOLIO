@@ -1,9 +1,13 @@
 import os
+import time
 from datetime import datetime
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
 # Configuración
 blog_dir = os.path.join(os.path.dirname(__file__), 'blog')
 index_path = os.path.join(os.path.dirname(__file__), 'index.html')
+blog_index_path = os.path.join(os.path.dirname(__file__), 'blog.html')
 
 def get_blog_entries(blog_dir):
     entries = []
@@ -38,15 +42,17 @@ def get_blog_entries(blog_dir):
                 })
     return sorted(entries, key=lambda x: x['date'], reverse=True)
 
-def update_index_html(index_path, recent_entries):
-    with open(index_path, 'r+', encoding='utf-8') as file:
+def update_html_file(file_path, recent_entries):
+    with open(file_path, 'r+', encoding='utf-8') as file:
         content = file.read()
         start_pos = content.find('<div class="blog-entries">')
         end_pos = content.find('</div>', start_pos) + len('</div>')
 
+        existing_entries = content[start_pos:end_pos]
         new_entries_html = '<div class="blog-entries">'
+
         for entry in recent_entries[:3]:
-            new_entries_html += f'''
+            entry_html = f'''
             <article class="blog-entry">
                 <img src="{entry['image']}" alt="Imagen de la {entry['title']}">
                 <div class="entry-content">
@@ -55,6 +61,9 @@ def update_index_html(index_path, recent_entries):
                 </div>
             </article>
             '''
+            if f'<a href="blog/{entry["filename"]}">' not in existing_entries:
+                new_entries_html += entry_html
+
         new_entries_html += '</div>'
 
         updated_content = content[:start_pos] + new_entries_html + content[end_pos:]
@@ -62,10 +71,53 @@ def update_index_html(index_path, recent_entries):
         file.write(updated_content)
         file.truncate()
 
-# Obtener las entradas del blog
-blog_entries = get_blog_entries(blog_dir)
+def update_entry_in_html(file_path, entry):
+    with open(file_path, 'r+', encoding='utf-8') as file:
+        content = file.read()
+        entry_start = content.find(f'<a href="blog/{entry["filename"]}">')
+        if entry_start != -1:
+            title_start = content.find('>', entry_start) + 1
+            title_end = content.find('</a>', title_start)
+            image_start = content.rfind('<img src="', 0, entry_start) + 10
+            image_end = content.find('"', image_start)
 
-# Actualizar index.html con las 3 entradas más recientes
-update_index_html(index_path, blog_entries)
+            updated_content = (
+                content[:title_start] + entry['title'] + content[title_end:]
+            )
+            updated_content = (
+                updated_content[:image_start] + entry['image'] + updated_content[image_end:]
+            )
 
-print(f'index.html actualizado con las 3 entradas más recientes')
+            file.seek(0)
+            file.write(updated_content)
+            file.truncate()
+
+def update_entries():
+    blog_entries = get_blog_entries(blog_dir)
+    for entry in blog_entries:
+        update_entry_in_html(index_path, entry)
+        update_entry_in_html(blog_index_path, entry)
+    update_html_file(index_path, blog_entries)
+    update_html_file(blog_index_path, blog_entries)
+    print(f'Entradas actualizadas en index.html y blog.html')
+
+class BlogEventHandler(FileSystemEventHandler):
+    def on_modified(self, event):
+        if event.src_path.endswith('.html'):
+            print(f'Archivo modificado: {event.src_path}')
+            update_entries()
+
+if __name__ == "__main__":
+    event_handler = BlogEventHandler()
+    observer = Observer()
+    observer.schedule(event_handler, path=blog_dir, recursive=False)
+    observer.start()
+    print(f'Monitoreando cambios en {blog_dir}...')
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+        print("Monitoreo detenido.")
+    observer.join()
