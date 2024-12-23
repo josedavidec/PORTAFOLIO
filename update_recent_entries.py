@@ -43,7 +43,6 @@ def update_index_html(index_path, recent_entries):
         content = file.read()
         start_pos = content.find('<div class="blog-entries">')
         end_pos = content.find('</div>', start_pos) + len('</div>')
-        entries_content = content[start_pos:end_pos]
 
         new_entries_html = '<div class="blog-entries">'
         for entry in recent_entries[:3]:
