@@ -3,7 +3,7 @@ from datetime import datetime
 
 # Configuración
 template_path = os.path.join(os.path.dirname(__file__), 'blog-entry-template.html')
-output_dir = os.path.join(os.path.dirname(__file__), 'blog')
+output_dir = os.path.join(os.path.dirname(__file__), '..', 'blog')
 blog_index_path = os.path.join(os.path.dirname(__file__), '..', 'blog.html')
 index_path = os.path.join(os.path.dirname(__file__), '..', 'index.html')
 
@@ -84,3 +84,43 @@ update_html_file(blog_index_path, new_entry_html, entry_date)
 update_html_file(index_path, new_entry_html, entry_date)
 
 print(f'Entradas actualizadas en blog.html e index.html')
+
+form_page_path = os.path.join(os.path.dirname(__file__), '..', 'create_entry.html')
+
+form_page_content = f'''
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nueva Entrada</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Crear Nueva Entrada</h1>
+    </header>
+    <main>
+        <form action="create_blog_entry.py" method="post">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required><br>
+            <label for="date">Fecha (dd/mm/yyyy):</label>
+            <input type="text" id="date" name="date"><br>
+            <label for="image">Ruta de la imagen:</label>
+            <input type="text" id="image" name="image"><br>
+            <label for="content">Contenido:</label>
+            <textarea id="content" name="content" rows="10" cols="50"></textarea><br>
+            <input type="submit" value="Crear Entrada">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2023 Mi Blog</p>
+    </footer>
+</body>
+</html>
+'''
+
+with open(form_page_path, 'w', encoding='utf-8') as file:
+    file.write(form_page_content)
+
+print(f'Página de formulario creada: {form_page_path}')
