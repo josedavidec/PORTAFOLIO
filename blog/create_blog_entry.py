@@ -8,7 +8,14 @@ blog_index_path = os.path.join(os.path.dirname(__file__), 'blog.html')
 index_path = os.path.join(os.path.dirname(__file__), 'index.html')
 
 entry_title = input("Introduce el título de la nueva entrada: ")
-entry_date = datetime.now().strftime("%d/%m/%Y")
+entry_date_input = input("Introduce la fecha de la entrada (dd/mm/yyyy) (deja en blanco para usar la fecha actual): ")
+
+# Usar la fecha actual si no se proporciona una fecha
+if entry_date_input:
+    entry_date = datetime.strptime(entry_date_input, "%d/%m/%Y").strftime("%d/%m/%Y")
+else:
+    entry_date = datetime.now().strftime("%d/%m/%Y")
+
 entry_filename = entry_title.lower().replace(' ', '-') + '.html'
 entry_image = input("Introduce la ruta de la imagen de la entrada (deja en blanco para usar la imagen por defecto): ")
 
@@ -38,25 +45,28 @@ new_entry_html = f'''
     <img src="{entry_image}" alt="Imagen de la {entry_title}">
     <div class="entry-content">
         <h3><a href="blog/{entry_filename}">{entry_title}</a></h3>
-        <p>Resumen de la entrada...</p>
         <span class="entry-date">Fecha: {entry_date}</span>
     </div>
 </article>
 '''
 
+def insert_entry_sorted(content, new_entry_html, entry_date):
+    entries = content.split('<article class="blog-entry">')[1:]
+    entries = [f'<article class="blog-entry">{entry}' for entry in entries]
+    entries.append(new_entry_html)
+    entries.sort(key=lambda x: datetime.strptime(x.split('Fecha: ')[1].split('</span>')[0], "%d/%m/%Y"), reverse=True)
+    return '<div class="blog-entries">' + ''.join(entries)
+
 with open(blog_index_path, 'r+', encoding='utf-8') as file:
     content = file.read()
-    insert_pos = content.find('<div class="blog-entries">') + len('<div class="blog-entries">')
-    updated_content = content[:insert_pos] + new_entry_html + content[insert_pos:]
+    updated_content = insert_entry_sorted(content, new_entry_html, entry_date)
     file.seek(0)
     file.write(updated_content)
     file.truncate()
 
-# Actualizar el archivo index.html
 with open(index_path, 'r+', encoding='utf-8') as file:
     content = file.read()
-    insert_pos = content.find('<div class="blog-entries">') + len('<div class="blog-entries">')
-    updated_content = content[:insert_pos] + new_entry_html + content[insert_pos:]
+    updated_content = insert_entry_sorted(content, new_entry_html, entry_date)
     file.seek(0)
     file.write(updated_content)
     file.truncate()
